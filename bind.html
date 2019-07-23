@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+    //    自定义bind
+      Function.prototype.bind= function (obj) {
+          let arr=[]
+          let self = this
+        if(arguments.length>1){
+            for(i=1; i<arguments.length;i++){
+                arr.push(arguments[i])
+            }
+        }
+        return function(){
+            if(arguments.length>0){
+            for(i=0; i<arguments.length;i++){
+                arr.push(arguments[i])
+                }
+            }
+                 self.apply(obj,arr)
+         }
+        } 
+        
+        function fn(a,b){
+            console.log(a , b,this.m)
+        }
+        let obj={m:3}   
+        fn.bind(obj,3)(1,2)
+        
+      
+
+        
+    </script>
+    
+</body>
+</html>
